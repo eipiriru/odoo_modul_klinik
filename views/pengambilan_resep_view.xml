@@ -1,0 +1,81 @@
+<odoo>
+    <data>
+        <record id="nur_klinik.pengambilan_resep_tree_view" model="ir.ui.view">
+            <field name="name">nur_klinik.pengambilan_resep_tree_view</field>
+            <field name="model">nur_klinik.pengambilan_resep</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Pengambilan Resep" create="false">
+                    <field name="name" decoration-danger="sudah_diperiksa == False"/>
+                    <field name="pasien_id"/>
+                    <field name="tgl_periksa" string="Tanggal Daftar"/>
+                    <field name="sudah_diperiksa" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="nur_klinik.pengambilan_resep_form_view" model="ir.ui.view">
+            <field name="name">nur_klinik.pengambilan_resep_form_view</field>
+            <field name="model">nur_klinik.pengambilan_resep</field>
+            <field name="arch" type="xml">
+                <form string="Pengambilan Resep" duplicate="0" create="false">
+                    <sheet>
+                        <group>
+                            <group colspan="2">
+                                <field name="name" readonly="1"/>
+                                <field name="pasien_id" readonly="1"/>
+                                <field name="layanan_id" readonly="1"/>
+                                <field name="harga_admin" string = "Biaya Administrasi"/>
+                                <field name="biaya_obat" invisible="1"/>
+                                <field name="total_harga" string="Biaya Obat" attrs="{'invisible': [('biaya_obat', '=', False)]}"/>
+                                <field name="tagihan" string="Total Tagihan"/>
+                                <field name="sudah_dibayar"/>
+                            </group>
+                                <field name="resep_ids" edit="false" readonly="1" attrs="{'invisible': [('biaya_obat', '=', False)]}">
+                                    <tree>                      
+                                        <field name="name" readonly="1"/>
+                                        <field name="harga" readonly="1"/>
+                                        <field name="desc_resep" readonly="1"/>
+                                        <field name="qty"/>
+                                        <field name="total_harga" sum="Total Harga Obat"/>
+                                    </tree>  
+                                </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="nur_klinik.pengambilan_resep_search_view" model="ir.ui.view">
+            <field name="name">nur_klinik.pengambilan_resep_search_viewh</field>
+            <field name="model">nur_klinik.pengambilan_resep</field>
+            <field name="arch" type="xml">
+                <search string="Pencarian">
+                <!-- Add your fields here -->
+                <field name="pasien_id"/>
+                </search>
+            </field>
+        </record>
+        
+        <record id="nur_klinik_action_pengambilan_resep" model="ir.actions.act_window">
+            <field name="type">ir.actions.act_window</field>
+            <field name="name">Pengambilan Resep</field>
+            <field name="res_model">nur_klinik.pengambilan_resep</field>
+            <field name="context">{
+            'search_default_sudah':1,
+            'default_sudah_diperiksa':True,
+            }
+            </field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('sudah_diperiksa', '=', True),('sudah_dibayar', '=', False)]</field>
+            <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('nur_klinik.pengambilan_resep_tree_view')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('nur_klinik.pengambilan_resep_form_view')})]"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Belum ada data
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

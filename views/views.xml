@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="nur_klinik.list">
+      <field name="name">nur_klinik list</field>
+      <field name="model">nur_klinik.nur_klinik</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="nur_klinik.action_window">
+      <field name="name">nur_klinik window</field>
+      <field name="res_model">nur_klinik.nur_klinik</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="nur_klinik.action_server">
+      <field name="name">nur_klinik server</field>
+      <field name="model_id" ref="model_nur_klinik_nur_klinik"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="nur_klinik" id="nur_klinik.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="nur_klinik.menu_1" parent="nur_klinik.menu_root"/>
+    <menuitem name="Menu 2" id="nur_klinik.menu_2" parent="nur_klinik.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="nur_klinik.menu_1_list" parent="nur_klinik.menu_1"
+              action="nur_klinik.action_window"/>
+    <menuitem name="Server to list" id="nur_klinik" parent="nur_klinik.menu_2"
+              action="nur_klinik.action_server"/>
+-->
+  </data>
+</odoo>

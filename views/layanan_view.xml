@@ -1,0 +1,46 @@
+<odoo>
+    <data>
+        <record id="nur_klinik.layanan_tree_view" model="ir.ui.view">
+            <field name="name">nur_klinik.layanan_tree_view</field>
+            <field name="model">nur_klinik.layanan</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Layanan">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="nur_klinik.layanan_form_view" model="ir.ui.view">
+            <field name="name">nur_klinik.layanan_form_view</field>
+            <field name="model">nur_klinik.layanan</field>
+            <field name="arch" type="xml">
+                <form string="Layanan">
+                    <sheet>
+                        <group>
+                            <group colspan="4">
+                                <field name="name" placeholder="Contoh : Pemeriksaan Kesehatan / Cek Darah / Tes NAPZA"/>
+                                <field name="biaya_obat"/>
+                                <field name="biaya_admin"/>
+                                <field name="harga_admin" attrs="{'invisible': [('biaya_admin', '=', False)]}"/>
+                                <field name="deskripsi"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record id="nur_klinik_action_layanan" model="ir.actions.act_window">
+            <field name="type">ir.actions.act_window</field>
+            <field name="name">Layanan</field>
+            <field name="res_model">nur_klinik.layanan</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Belum ada data
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

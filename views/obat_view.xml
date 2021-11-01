@@ -1,0 +1,87 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="nur_klinik.obat_kanban_view">
+            <field name="name">nur_klinik.obat_kanban_view</field>
+            <field name="model">nur_klinik.obat</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="name"/>
+                    <field name="id"/>
+                    <field name="kategori_obat_id"/>
+                    <field name="image"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="o_kanban_image">
+                                            <img t-att-src="kanban_image('nur_klinik.obat','image',record.id.raw_value)"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <strong><field name="name"/></strong>
+                                        <div name="tags"/>
+                                            <field name="kategori_obat_id"/><br/>
+                                            STOK : <field name="stok"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="nur_klinik.obat_tree_view" model="ir.ui.view">
+            <field name="name">nur_klinik.obat_tree_view</field>
+            <field name="model">nur_klinik.obat</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Obat">
+                    <field name="name"/>
+                    <field name="kategori_obat_id"/>
+                    <field name="harga"/>
+                    <field name="stok"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="nur_klinik.obat_form_view" model="ir.ui.view">
+            <field name="name">nur_klinik.obat_form_view</field>
+            <field name="model">nur_klinik.obat</field>
+            <field name="arch" type="xml">
+                <form string="Obat">
+                    <sheet>
+                         <field name="image" widget="image" class="oe_avatar"/>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" default_focus="1" placeholder="Name"/>
+                            </h1>
+                        </div>                        
+                        <group colspan="2">
+                                <field name="kategori_obat_id"/>
+                                <field name="harga"/>
+                                <field name="stok"/>
+                                <field name="deskripsi"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record id="nur_klinik_action_obat" model="ir.actions.act_window">
+            <field name="type">ir.actions.act_window</field>
+            <field name="name">Obat</field>
+            <field name="res_model">nur_klinik.obat</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Belum ada data
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

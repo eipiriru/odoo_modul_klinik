@@ -1,0 +1,89 @@
+<odoo>
+    <data>
+        <record id="nur_klinik.pemeriksaan_tree_view" model="ir.ui.view">
+            <field name="name">nur_klinik.pemeriksaan_tree_view</field>
+            <field name="model">nur_klinik.pemeriksaan</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Pemeriksaan" create="false">
+                    <field name="name" decoration-danger="sudah_diperiksa == False"/>
+                    <field name="pasien_id"/>
+                    <field name="layanan_id"/>
+                    <field name="sudah_diperiksa" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="nur_klinik.pemeriksaan_form_view" model="ir.ui.view">
+            <field name="name">nur_klinik.pemeriksaan_form_view</field>
+            <field name="model">nur_klinik.pemeriksaan</field>
+            <field name="arch" type="xml">
+                <form string="Pemeriksaan" duplicate="0" create="false">
+                    <sheet>
+                        <group>
+                            <group colspan="2">
+                                <field name="name"/>
+                                <field name="pasien_id" readonly="1"/>
+                                <field name="layanan_id" readonly="1"/>
+                                <field name="tgl_periksa" string="Tanggal Daftar" readonly="1"/>
+                                <field name="sudah_diperiksa"/>
+                                <field name="biaya_obat" invisible="1"/>
+                                <field name="diagnosa" attrs="{'invisible': [('biaya_obat', '=', False)]}"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Resep" attrs="{'invisible': [('biaya_obat', '=', False)]}">
+                                <field name="resep_ids">
+                                    <tree editable="bottom">                      
+                                        <field name="name" required="1" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True}"/>
+                                        <field name="deskripsi"/>
+                                        <field name="qty"/>
+                                        <field name="desc_resep" placeholder="Example : Berikan 5 tablet, konsumsi 3x sehari sebelum makan"/>
+                                    </tree>  
+                                </field>
+                            </page>
+                            <page string="Riwayat Pasien" >
+                                <field name="riwayat_ids" edit="false" readonly="1" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True, 'no_delete':True}">
+                                    <tree>                      
+                                        <field name="name" readonly="1"/>
+                                        <field name="tgl_periksa" readonly="1"/>
+                                        <field name="diagnosa" readonly="1"/>
+                                    </tree>  
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="nur_klinik.pemeriksaan_search_view" model="ir.ui.view">
+            <field name="name">nur_klinik.pemeriksaan_search_viewh</field>
+            <field name="model">nur_klinik.pemeriksaan</field>
+            <field name="arch" type="xml">
+                <search string="Pencarian">
+                <!-- Add your fields here -->
+                <field name="pasien_id"/>
+                </search>
+            </field>
+        </record>
+        
+        <record id="nur_klinik_action_pemeriksaan" model="ir.actions.act_window">
+            <field name="type">ir.actions.act_window</field>
+            <field name="name">Pemeriksaan</field>
+            <field name="res_model">nur_klinik.pemeriksaan</field>
+            <field name="context">{
+            'search_default_belum':1,
+            'default_sudah_diperiksa':False,
+            }
+            </field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('sudah_diperiksa', '=', False)]</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Belum ada data
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

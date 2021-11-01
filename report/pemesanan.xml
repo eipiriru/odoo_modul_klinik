@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="nur_klinik.pemesanan">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="oe_structure">
+                            <div class="row">
+                                <div class="col-4">Kepada : </div>
+                                <div class="col-8"><span t-field="doc.name"></span></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">Note : </div>
+                                <div class="col-8"><p>Kami memesan barang-barang berikut</p></div>
+                            </div>
+                            <br/><br/>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <th>Nama Barang</th>
+                                            <th>Jumlah</th>
+                                        </tr>
+                                        <tr t-foreach="doc.transaksi_ids" t-as="data">
+                                            <td><span t-esc="data.name.name"></span></td>
+                                            <td><span t-esc="data.qty"></span></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

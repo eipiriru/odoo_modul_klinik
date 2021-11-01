@@ -1,0 +1,29 @@
+<odoo>
+ 
+ 
+    <!-- Membuat Category Group Training -->
+ 
+    <record id="nur_klinik_category" model="ir.module.category">
+        <field name="name">KLINIKKU</field>
+    </record>
+ 
+    <!-- Membuat Group Training -->
+ 
+    <record id="nur_klinik_category_pegawai" model="res.groups">
+        <field name="name">Pegawai</field>
+        <field name="category_id" ref="nur_klinik_category"/>
+    </record>
+
+    <record id="nur_klinik_category_dokter" model="res.groups">
+        <field name="name">Dokter</field>
+        <field name="category_id" ref="nur_klinik_category"/>
+    </record>
+
+    <record id="nur_klinik_category_admin" model="res.groups">
+        <field name="name">Admin</field>
+        <field name="category_id" ref="nur_klinik_category"/>
+        <field name="implied_ids" eval="[(4, ref('nur_klinik_category_pegawai'))]"/>
+    </record>
+ 
+ 
+</odoo>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="pengambilan_resep">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="oe_structure">
+                            <div class="row">
+                                <div class="col-4">Kode Pembayaran : </div>
+                                <div class="col-8"><span t-field="doc.name"></span></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">Nama : </div>
+                                <div class="col-8"><span t-field="doc.pasien_id"></span></div>
+                            </div>
+                            <br/><br/>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <th>Item</th>
+                                            <th>Uraian</th>
+                                            <th>Jumlah harga</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Layanan Kesehatan</td>
+                                            <td><span t-esc="doc.layanan_id.name"></span></td>
+                                            <td><span t-esc="doc.layanan_id.harga_admin"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Obat</td>
+                                            <td>
+                                                <table>
+                                                    <tr>
+                                                        <th>Nama Obat</th>
+                                                        <th>Harga</th>
+                                                        <th>Jumlah Beli</th>
+                                                        <th>Total Harga</th>
+                                                    </tr>
+                                                    <tr t-foreach="doc.resep_ids" t-as="data">
+                                                        <td><span t-esc="data.name.name"></span></td>
+                                                        <td><span t-esc="data.harga"></span></td>
+                                                        <td><span t-esc="data.qty"></span></td>
+                                                        <td><span t-esc="data.total_harga"></span></td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td><span t-field="doc.total_harga"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">Total Harga yang harus dibayarkan</td>
+                                            <td><span t-field="doc.tagihan"></span></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,48 @@
+<odoo>
+    <data>
+        <record id="nur_klinik.pasien_tree_view" model="ir.ui.view">
+            <field name="name">nur_klinik.pasien_tree_view</field>
+            <field name="model">nur_klinik.pasien</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Pasien">
+                    <field name="name"/>
+                    <field name="nik"/>
+                    <field name="alamat"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="nur_klinik.pasien_form_view" model="ir.ui.view">
+            <field name="name">nur_klinik.pasien_form_view</field>
+            <field name="model">nur_klinik.pasien</field>
+            <field name="arch" type="xml">
+                <form string="Pasien">
+                    <sheet>
+                        <group>
+                            <group colspan="4">
+                                <field name="name"/>
+                                <field name="nik"/>
+                                <field name="tgl_lahir"/>
+                                <field name="umur"/>
+                                <field name="alamat"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record id="nur_klinik_action_pasien" model="ir.actions.act_window">
+            <field name="type">ir.actions.act_window</field>
+            <field name="name">Pasien</field>
+            <field name="res_model">nur_klinik.pasien</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Belum ada data
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

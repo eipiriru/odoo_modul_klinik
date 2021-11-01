@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="report_nur_klinik_pengambilan_resep" model="ir.actions.report">
+        <field name="name">Pembayaran Resep Dokter</field>
+        <field name="model">nur_klinik.pengambilan_resep</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nur_klinik.pengambilan_resep</field>
+        <field name="report_file">nur_klinik.pengambilan_resep</field>
+        <field name="binding_model_id" ref="model_nur_klinik_pengambilan_resep"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="report_nur_klinik_pemesanan" model="ir.actions.report">
+        <field name="name">Pemesanan Barang</field>
+        <field name="model">nur_klinik.pemesanan</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nur_klinik.pemesanan</field>
+        <field name="report_file">nur_klinik.pemesanan</field>
+        <field name="binding_model_id" ref="model_nur_klinik_pemesanan"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>
