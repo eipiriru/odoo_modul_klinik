@@ -22,3 +22,5 @@ access_nur_klinik_pendaftaran,nur_klinik.pendaftaran,model_nur_klinik_pendaftara
 access_nur_klinik_layanan,nur_klinik.layanan,model_nur_klinik_layanan,nur_klinik_category_dokter,1,0,0,0
 access_nur_klinik_pemeriksaan,nur_klinik.pemeriksaan,model_nur_klinik_pemeriksaan,nur_klinik_category_dokter,1,1,0,0
 access_nur_klinik_pengambilan_resep,nur_klinik.pengambilan_resep,model_nur_klinik_pengambilan_resep,nur_klinik_category_dokter,1,1,0,1
+access_nur_klinik_resep,nur_klinik.resep,model_nur_klinik_resep,nur_klinik_category_dokter,1,1,1,0
+access_nur_klinik_obat,nur_klinik.obat,model_nur_klinik_obat,nur_klinik_category_dokter,1,0,0,0
