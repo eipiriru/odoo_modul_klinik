@@ -3,24 +3,24 @@
     <data>
         <menuitem id="menu_dashboard_klinik" name="Klinik Kita"/>
 
-        <menuitem id="menu_bar_pegawai" name="Halaman Pegawai" parent="menu_dashboard_klinik" groups="nur_klinik_category_pegawai"/>
+        <menuitem id="menu_bar_pegawai" name="Halaman Pegawai" parent="menu_dashboard_klinik"/>
         <menuitem id="menu_item_pendaftaran" name="Pendaftaran" parent="menu_bar_pegawai" action="nur_klinik_action_pendaftaran"/>
         <menuitem id="menu_item_pengambilan_resep" name="Pengambilan Resep" parent="menu_bar_pegawai" action="nur_klinik_action_pengambilan_resep"/>
 
-        <menuitem id="menu_bar_dokter" name="Halaman Dokter" parent="menu_dashboard_klinik" groups="nur_klinik_category_dokter"/>
+        <menuitem id="menu_bar_dokter" name="Halaman Dokter" parent="menu_dashboard_klinik"/>
         <menuitem id="menu_item_pemeriksaan" name="Pemeriksaan" parent="menu_bar_dokter" action="nur_klinik_action_pemeriksaan"/>
 
-        <menuitem id="menu_bar_supply" name="Halaman Pemesanan" parent="menu_dashboard_klinik" groups="nur_klinik_category_admin"/>
+        <menuitem id="menu_bar_supply" name="Halaman Pemesanan" parent="menu_dashboard_klinik"/>
         <menuitem id="menu_item_supplier" name="Supplier" parent="menu_bar_supply" action="nur_klinik_action_supplier"/>
         <menuitem id="menu_item_pemesanan" name="Pemesanan" parent="menu_bar_supply" action="nur_klinik_action_pemesanan"/>
 
-        <menuitem id="menu_bar_master" name="Halaman Master" parent="menu_dashboard_klinik" groups="nur_klinik_category_admin"/>
+        <menuitem id="menu_bar_master" name="Halaman Master" parent="menu_dashboard_klinik"/>
         <menuitem id="menu_item_layanan" name="Data Layanan Kesehatan" parent="menu_bar_master" action="nur_klinik_action_layanan"/>
         <menuitem id="menu_item_pasien" name="Data Pasien" parent="menu_bar_master" action="nur_klinik_action_pasien"/>
         <menuitem id="menu_item_kategori_obat" name="Data Kategori Obat" parent="menu_bar_master" action="nur_klinik_action_kategori_obat"/>
         <menuitem id="menu_item_obat" name="Data Obat" parent="menu_bar_master" action="nur_klinik_action_obat"/>
 
-        <menuitem id="menu_bar_laporan" name="Lpaoran" parent="menu_dashboard_klinik" action="nur_klinik_action_laporan_penjualan" groups="nur_klinik_category_admin"/>
+        <menuitem id="menu_bar_laporan" name="Lpaoran" parent="menu_dashboard_klinik" action="nur_klinik_action_laporan_penjualan"/>
 
         <!-- <menuitem id="menu_item_instructor_tags" name="Instructor Tags" parent="menu_bar_configuration" action="base.action_partner_category_form"/> -->
     </data>
