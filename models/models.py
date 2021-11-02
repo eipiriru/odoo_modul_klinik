@@ -53,7 +53,8 @@ class PengambilanResep(models.Model):
 
     name = fields.Char(
         string='Kode Pemeriksaan',
-        readonly=True
+        readonly=True,
+        default = 'New'
     )
 
     @api.model
@@ -121,38 +122,3 @@ class PengambilanResep(models.Model):
         for record in self:           
             total = self.total_harga + self.layanan_id.harga_admin
             record.tagihan = total
-    
-    
-
-class Pemeriksaan(models.Model):
-    _name = "nur_klinik.pemeriksaan"
-    _inherits = {'nur_klinik.pengambilan_resep': 'pengambilan_resep_id'}
- 
-    pengambilan_resep_id = fields.Many2one(
-        'nur_klinik.pengambilan_resep', 
-        'Kode Pendaftaran', 
-        required=True, 
-        ondelete='cascade'
-    )
-
-    name = fields.Char(
-        string='Kode Pendaftaran/Pemeriksaan',
-        inherited=True
-    )
-    
-class Pendaftaran(models.Model):
-    _name = "nur_klinik.pendaftaran"
-    _inherits = {'nur_klinik.pemeriksaan': 'pemeriksaan_id'}
- 
-    pemeriksaan_id = fields.Many2one(
-        'nur_klinik.pemeriksaan', 
-        'Kode Pendaftaran',
-        ondelete='cascade'
-    )
-
-    name = fields.Char(
-        string='Kode Pendaftaran/Pemeriksaan',
-        inherited=True,
-        default = 'New'
-    )
-    
