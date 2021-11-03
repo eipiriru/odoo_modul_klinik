@@ -46,7 +46,7 @@
             <field name="type">ir.actions.act_window</field>
             <field name="name">Laporan Penjualan</field>
             <field name="res_model">nur_klinik.pengambilan_resep</field>
-            <field name="domain">[('sudah_diperiksa', '=', True),('sudah_dibayar', '=', True)]</field>
+            <field name="domain">[('state', '=', 'selesai')]</field>
             <field name="view_mode">tree,form</field>
             <field name="view_ids" eval="[(5, 0, 0),
             (0, 0, {'view_mode': 'tree', 'view_id': ref('nur_klinik.laporan_penjualan_tree_view')}),

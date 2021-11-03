@@ -6,10 +6,10 @@
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <tree string="Pemeriksaan" create="false">
-                    <field name="name" decoration-danger="sudah_diperiksa == False"/>
+                    <field name="name" decoration-danger="state == 'daftar'"/>
                     <field name="pasien_id"/>
                     <field name="layanan_id"/>
-                    <field name="sudah_diperiksa" invisible="1"/>
+                    <field name="state"/>
                 </tree>
             </field>
         </record>
@@ -20,13 +20,17 @@
             <field name="arch" type="xml">
                 <form string="Pemeriksaan" duplicate="0" create="false">
                     <sheet>
+                    <header>
+                        <button name="action_periksa" type="object" string="Sudah Diperiksa" states="daftar" class="btn-primary"/>
+                        <button name="action_bayar" type="object" string="Close" states="selesai" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="daftar,periksa,selesai"/>
+                    </header>
                         <group>
                             <group colspan="2">
                                 <field name="name"/>
                                 <field name="pasien_id" readonly="1"/>
                                 <field name="layanan_id" readonly="1"/>
                                 <field name="tgl_periksa" string="Tanggal Daftar" readonly="1"/>
-                                <field name="sudah_diperiksa"/>
                                 <field name="biaya_obat" invisible="1"/>
                                 <field name="diagnosa" attrs="{'invisible': [('biaya_obat', '=', False)]}"/>
                             </group>
@@ -72,13 +76,8 @@
             <field name="type">ir.actions.act_window</field>
             <field name="name">Pemeriksaan</field>
             <field name="res_model">nur_klinik.pengambilan_resep</field>
-            <field name="context">{
-            'search_default_belum':1,
-            'default_sudah_diperiksa':False,
-            }
-            </field>
             <field name="view_mode">tree,form</field>
-            <field name="domain">[('sudah_diperiksa', '=', False)]</field>
+            <field name="domain">[('state', '=', 'daftar')]</field>
             <field name="view_ids" eval="[(5, 0, 0),
             (0, 0, {'view_mode': 'tree', 'view_id': ref('nur_klinik.pemeriksaan_tree_view')}),
             (0, 0, {'view_mode': 'form', 'view_id': ref('nur_klinik.pemeriksaan_form_view')})]"/>
