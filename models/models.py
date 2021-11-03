@@ -2,6 +2,7 @@
 
 from odoo import models, fields, api, _
 import datetime
+from odoo.exceptions import UserError, ValidationError
 
 
 class Pasien(models.Model):
